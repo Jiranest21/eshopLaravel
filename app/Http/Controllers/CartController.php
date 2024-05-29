@@ -39,7 +39,7 @@ class CartController extends Controller
             ["user_id" => auth()->user()->id, "product_id" => $product_id]
             
         ]);
-        return redirect(route("home"));
+        return redirect()->back();
     }
 
     /**
