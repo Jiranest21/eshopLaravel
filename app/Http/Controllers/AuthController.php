@@ -6,6 +6,7 @@ use Illuminate\Auth\Events\Logout;
 use Illuminate\Http\Request;
 use DB;
 use Illuminate\Support\Facades\Hash;
+use laravel\Prompts\errors;
 
 class AuthController extends Controller
 {
@@ -31,11 +32,14 @@ class AuthController extends Controller
         validator(request()->all(), [
              "email" => ["required", "email","unique:users"],
              "password" => ["required", "min:8", "max:25"],
+             "password2" => ["required", "min:8", "max:25"],
              "name" => ["required", "min:8", "max:25"],
         ])->validate();
        
 
-       
+    if (request()->input('password') != request()->input('password2')){
+        return view("Security/register")->withErrors(array("password must be the same"));
+    }
         $name = $request->input("name");
         $password = $request->input("password");
         $email = $request->input("email");

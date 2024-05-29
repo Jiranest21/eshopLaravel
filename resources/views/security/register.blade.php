@@ -15,9 +15,14 @@
     @endif
     <form action="{{route("user.register")}}" method="post">
     @csrf
-    <input type="text" name ="name">
+    <label for="name">Name: </label>
+    <input type="text" name ="name" class = "">
+    <label for="name">E-mail: </label>
     <input type="text" name="email">
+    <label for="name">Password: </label>
     <input type="password" name="password">
+    <label for="name">Confirm Password: </label>
+    <input type="password" name="password2">
     <button type="submit">
         Submit
     </button>
