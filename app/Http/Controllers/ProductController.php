@@ -31,7 +31,7 @@ class ProductController extends Controller
                     ->whereRaw($query)
                     ->get();
 
-        return view("Product/filter",[
+        return view("welcome",[
             "products" => $Product,
             "filtrs" => Product::getFiltrs(),
         ]);
