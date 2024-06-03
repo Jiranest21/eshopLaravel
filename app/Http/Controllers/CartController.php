@@ -34,6 +34,9 @@ class CartController extends Controller
      */
     public function store(Request $request)
     {
+        validator(request()->all(),[
+            "product_id" => "numeric"
+        ])->validate();
         $product_id = request()->input("product_id");
         Db::table("carts")->insert([
             ["user_id" => auth()->user()->id, "product_id" => $product_id]
@@ -73,5 +76,15 @@ class CartController extends Controller
     {
         Db::table("carts")->where("user_id", "=", auth()->user()->id)->delete();
         return redirect()->back();
+    }
+    public function delete(Request $request)
+    {
+        validator($request->all(),[
+            "id" => "numeric"
+        ])->validate();
+
+        $product = $request->input("id");
+        DB::table("carts")->where("user_id", "=", auth()->user()->id)->where("product_id","=",$product)->delete();
+        return redirect()->back();    
     }
 }

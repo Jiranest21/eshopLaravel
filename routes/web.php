@@ -33,6 +33,7 @@ Route::post('/logout', [AuthController::class, "logout"])->name("logout");
 Route::get("/cart",[CartController::class, "index"])->name("cart")->middleware(UserIsLoggedIn::class);;
 Route::post("/addToCart",[CartController::class, "store"])->name("AddToCart")->middleware(UserIsLoggedIn::class);
 Route::post("/deleteCart",[CartController::class, "destroy"])->name("DeleteCart")->middleware(UserIsLoggedIn::class);
+Route::post("/removeCart",[CartController::class, "delete"])->name("cartRemove")->middleware(UserIsLoggedIn::class);
 
 Route::get("/admin",[AdminController::class, "index"])->name("Admin")->middleware(UserIsAdmin::class);
 Route::get("/admin/login", [Product::class, "getFiltrs"]);

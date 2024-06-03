@@ -17,7 +17,7 @@ class Cart extends Model
         return DB::table('carts')
                     ->join('products', 'products.id', '=', 'carts.product_id')
                     ->where('carts.user_id','=',$userid)
-                    ->select('products.name')
+                    ->select(["products.name", "products.id"])
                     ->get();
     }
 }

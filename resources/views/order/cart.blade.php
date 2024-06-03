@@ -76,6 +76,11 @@
             @forelse ($products as $product) 
                 <div class="product">
                     <p>{{$product->name}}</p>
+                    <form method="post" action="{{route("cartRemove")}}">
+                        @csrf
+                        <input type="hidden" name="id" value = "{{$product->id}}">
+                        <input type="submit" value="smazat">
+                    </form>
                 </div>
             @empty
                 <p class="empty-message">kupuj kurvá neeee!!!!!!</p>

@@ -52,6 +52,9 @@ class AuthController extends Controller
 
     public function logout (Request $request)
     {
+        validator(request()->all(),[
+            "id" => "numeric"
+        ])->validate();
         $userId = $request ->input("id");
 
         Db::table("sessions")->where("user_id","=",$userId)->delete();
