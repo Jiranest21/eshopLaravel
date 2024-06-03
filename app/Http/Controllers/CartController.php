@@ -35,7 +35,7 @@ class CartController extends Controller
     public function store(Request $request)
     {
         validator(request()->all(),[
-            "product_id" => "numeric"
+            "product_id" => ["exists:products,id","required"]
         ])->validate();
         $product_id = request()->input("product_id");
         Db::table("carts")->insert([
@@ -80,7 +80,7 @@ class CartController extends Controller
     public function delete(Request $request)
     {
         validator($request->all(),[
-            "id" => "numeric"
+            "id" => ["exists:products", "required"]
         ])->validate();
 
         $product = $request->input("id");

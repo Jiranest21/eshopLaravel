@@ -44,5 +44,6 @@ Route::get("admin/editProductForm/{id}", function($id){
 })->name("EditProductForm")->middleware(UserIsAdmin::class);
 Route::post("admin/edit",[ProductController::class, "update"])->name("EditProduct")->middleware(UserIsAdmin::class);
 Route::post("admin/delete",[ProductController::class, "delete"])->name("DeleteProduct")->middleware(UserIsAdmin::class);
+Route::post("admin/createProduct",[ProductController::class, "create"])->name("addProduct")->middleware(UserIsAdmin::class);
 
 Route::get("/filteredProducts",[ProductController::class, "filter"])->name("FilteredProducts");

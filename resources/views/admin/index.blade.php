@@ -54,6 +54,31 @@
     </style>
 </head>
 <body>
+    <div class="cock">
+    @if ($errors->any())
+            <ul class="error-list">
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        @endif
+        <form action="{{route("addProduct")}}" method="post">
+            @csrf
+            <label for="name">Name:</label>
+            <input type="text" name="name" id="name">
+            
+            <label for="price">Price:</label>
+            <input type="text" name="price" id="price">
+            
+            <label for="description">Description:</label>
+            <input type="text" name="description" id="description">
+
+            <label for="filtr">Filtr:</label>
+            <input type="text" name="filtr" id="filtr">
+
+            <input type="submit" value="Vytvořit">
+        </form>
+    </div>
     <div class="container">
         @foreach ($products as $product)
             <div class="product">
